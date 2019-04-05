@@ -6,7 +6,7 @@ def linear(x):
 
 
 def sigmoid(x):
-    return 1 / (1 + np.exp(-1 * x))
+    return np.divide(1, np.add(1, np.exp(np.multiply(-1, x))))
 
 
 def tanh(x):
@@ -18,21 +18,21 @@ def relu(x):
 
 
 def lrelu(x):
-    if (x >= 0):
+    if x >= 0:
         return x
     else:
-        return x * 0.01
+        return np.multiply(0.01, x)
 
 
 def prelu(x, a):
-    if (x >= 0):
+    if x >= 0:
         return x
     else:
-        return x * a
+        return np.multiply(a, x)
 
 
 def selu(x, a=1):
-    if (x >= 0):
+    if x >= 0:
         return x
     else:
-        return a * (np.exp(x) - 1)
+        return np.multiply(a, np.subtract(np.exp(x), 1))
